@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Conference extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'title',
+        'description',
+        'start_time',
+        'end_time',
+        'location',
+        'attendee_limit',
+    ];
 }
