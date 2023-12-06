@@ -3,10 +3,7 @@
 use App\Http\Controllers\ConferenceController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return ['Laravel' => app()->version()];
-});
-
+Route::view('/{path?}', 'conferences.index');
 Route::resource('conferences', ConferenceController::class);
 
 require __DIR__.'/auth.php';

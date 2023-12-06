@@ -11,7 +11,7 @@ class ConferenceController extends Controller
     public function index()
     {
         $conferences = Conference::all();
-        return view('conferences.index', compact('conferences'));
+        return response()->json($conferences);
     }
 
     public function create()
