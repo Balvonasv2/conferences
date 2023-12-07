@@ -15,4 +15,9 @@ class Conference extends Model
         'location',
         'attendee_limit',
     ];
+
+    protected $casts = [
+        'start_time' => 'datetime',
+        'end_time' => 'datetime',
+    ];
 }

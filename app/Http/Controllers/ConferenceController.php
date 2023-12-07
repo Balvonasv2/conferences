@@ -22,8 +22,7 @@ class ConferenceController extends Controller
     public function store(StoreConferenceRequest $request)
     {
         $conference = Conference::create($request->validated());
-        $conference->save();
-        return redirect()->route('conferences.index')->with('success', 'Conference created successfully.');
+        return response()->json($conference, 201);
     }
 
     public function show(Conference $conference)
@@ -38,14 +37,13 @@ class ConferenceController extends Controller
 
     public function update(UpdateConferenceRequest $request, Conference $conference)
     {
-        $conference->fill($request->validated());
-        $conference->save();
-        return redirect()->route('conferences.show', $conference)->with('success', 'Conference updated successfully.');
+        $conference->update($request->validated());
+        return response()->json($conference, 200);
     }
 
     public function destroy(Conference $conference)
     {
         $conference->delete();
-        return redirect()->route('conferences.index')->with('success', 'Conference deleted successfully.');
+        return response()->json(['message' => 'Conference deleted successfully.'], 200);
     }
 }
