@@ -25,9 +25,13 @@ class ConferenceController extends Controller
         return response()->json($conference, 201);
     }
 
-    public function show(Conference $conference)
-    {
-        return view('conferences.show', compact('conference'));
+    public function show($conferenceId) {
+        $conference = Conference::find($conferenceId);
+        if ($conference) {
+            return response()->json($conference);
+        } else {
+            return response()->json(['error' => 'Conference not found'], 404);
+        }
     }
 
     public function edit(Conference $conference)

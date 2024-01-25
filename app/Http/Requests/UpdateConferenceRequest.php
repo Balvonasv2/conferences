@@ -1,7 +1,5 @@
 <?php
 
-// In app/Http/Requests/UpdateConferenceRequest.php
-
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -10,8 +8,7 @@ class UpdateConferenceRequest extends FormRequest
 {
     public function authorize()
     {
-        $conference = $this->route('conference');
-        return auth()->check() && auth()->id() === $conference->user_id;
+        return auth()->check();
     }
 
     public function rules()
